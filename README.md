@@ -64,7 +64,7 @@ private List<User> userList;
 ```
 ---
 ## Datastructures
-- `ArrayList<>`
+- `List<>`
 ---
 ## Summary
 This API is a `Spring Boot` project that is about managing users. We can create, read, update, and delete user.
