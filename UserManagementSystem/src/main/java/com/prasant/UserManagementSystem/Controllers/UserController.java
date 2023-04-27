@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.prasant.UserManagementSystem.Models.User;
 import com.prasant.UserManagementSystem.Services.UserService;
-import com.prasant.UserManagementSystem.Services.Models.User;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class UserController {
@@ -21,7 +23,7 @@ public class UserController {
 	UserService userService;
 
 	@PostMapping(value = "addUser")
-	public String addUser(@RequestBody User newUser) {
+	public String addUser(@Valid @RequestBody User newUser) {
 		return userService.addUser(newUser);
 	}
 
@@ -35,9 +37,9 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 
-	@PutMapping(value = "updateUserInfo")
-	public String updateUserInfo(@RequestBody User updatedUser) {
-		return userService.updateUser(updatedUser);
+	@PutMapping(value = "updateUserInfo/{userId}")
+	public String updateUserInfo(@Valid @RequestBody User updatedUser, @PathVariable("userId") int userId) {
+		return userService.updateUser(updatedUser, userId);
 	}
 
 	@DeleteMapping(value = "deleteUser/{userId}")

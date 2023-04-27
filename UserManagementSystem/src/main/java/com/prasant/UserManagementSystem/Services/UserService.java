@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.prasant.UserManagementSystem.Models.User;
 import com.prasant.UserManagementSystem.Repositories.UserDao;
-import com.prasant.UserManagementSystem.Services.Models.User;
 
 @Service
 public class UserService {
@@ -37,12 +37,15 @@ public class UserService {
 		return null;
 	}
 
-	public String updateUser(User updatedUser) {
-		User user = getUserById(updatedUser.getUserId());
+	public String updateUser(User updatedUser, int userId) {
+		User user = getUserById(userId);
 		if (user != null) {
 			user.setUserName(updatedUser.getUserName());
-			user.setAddress(updatedUser.getAddress());
+			user.setDateOfBirth(updatedUser.getDateOfBirth());
+			user.setEmail(updatedUser.getEmail());
 			user.setPhoneNumber(updatedUser.getPhoneNumber());
+			user.setDate(updatedUser.getDate());
+			user.setTime(updatedUser.getTime());
 			return "User updated successfully !!!!";
 		} else {
 			return "User update failed !!!!";
