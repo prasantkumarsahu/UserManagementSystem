@@ -13,17 +13,40 @@ This is a API project for insert, read, update, and delete User.
 
 ## Model
 - ### User Properties
-    - UserId
-    - UserName
-    - Address
-    - PhoneNumber
+    - ```java
+      private int userId;
+      ```
+    - ```java
+      @NotBlank
+      private String userName;
+      ```
+    - ```java
+      @Pattern(regexp = "[0-9]{2}-[0-9]{2}-[0-9]{4}", message = "Enter a valid date (DD-MM-YYYY)")
+      private String dateOfBirth;
+      ```
+    - ```java
+      @Email
+      private String email;
+      ```
+    - ```java
+      @Pattern(regexp = "[0-9]{12}", message = "Phone number must be contains 12 digits!")
+      private String phoneNumber;
+      ```
+    - ```java
+      @Pattern(regexp = "[0-9]{2}-[0-9]{2}-[0-9]{4}", message = "Enter a valid date (DD-MM-YYYY)")
+      private String date;
+      ```
+    - ```java
+      @Pattern(regexp = "[0-9]{2}:[0-9]{2}", message = "Enter a valid time (HH:MM)")
+      private String time;
+      ```
 ---
 ## Dataflow
 - ### End Points / Controllers
     - `addUser` 
     - `getUser/{userId}`
     - `getAllUser`
-    - `updateUserInfo`
+    - `updateUserInfo/{userId}`
     - `deleteUser/{userId}`
 - ### Services
     - For adding user
@@ -67,8 +90,7 @@ private List<User> userList;
 ```
 ---
 ## Datastructures
-- `List<>`
+- `ArrayList<>`
 ---
 ## Summary
-This API is a `Spring Boot` project that is about managing users. We can create, read, update, and delete user. In this project request is sent from the client on HTTP in JSON format or from path variable and stored in object then response is sent back from the server by JSON format to the client.
-
+This API is a `Spring Boot` project that is about managing users. We can create, read, update, and delete user. In this project request is sent from the client on HTTP in JSON format or from path variable with server side validations and stored in object then response is sent back from the server by JSON format to the client.
